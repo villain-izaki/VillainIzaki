@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Villain Izaki — Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#0a0a0f;
+    --bg2:#0f0a1a;
+    --card:#0c0a18;
+    --accent:#ff2a4a;
+    --accent2:#7a2aff;
+    --muted:#8a8aaa;
+    --glow:0 0 60px rgba(255,42,74,0.08);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,Arial;
+    background: linear-gradient(145deg, var(--bg1), var(--bg2));
+    color:#e6eef8;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:24px;
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:'';
+    position:fixed;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(255,42,74,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(122,42,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(255,42,74,0.02) 0%, transparent 50%);
+    pointer-events:none;
+    z-index:0;
+    animation: villainGlow 8s ease-in-out infinite alternate;
+  }
+  @keyframes villainGlow{
+    0%{transform:scale(1) rotate(0deg)}
+    100%{transform:scale(1.05) rotate(2deg)}
+  }
+  body::after{
+    content:'';
+    position:fixed;
+    top:0;left:0;width:100%;height:100%;
+    background-image: 
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.03), transparent),
+      radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.02), transparent),
+      radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.03), transparent),
+      radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.02), transparent),
+      radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.03), transparent),
+      radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.02), transparent),
+      radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.02), transparent);
+    background-size:100% 100%;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:420px;
+    position:relative;
+    z-index:1;
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(12,10,24,0.85), rgba(10,10,15,0.92));
+    border-radius:20px;
+    padding:24px 20px;
+    box-shadow: var(--glow), 0 8px 40px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,42,74,0.08);
+    backdrop-filter:blur(4px);
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:'';
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    right:-2px;
+    bottom:-2px;
+    border-radius:22px;
+    background:linear-gradient(135deg, rgba(255,42,74,0.1), transparent 40%, rgba(122,42,255,0.1));
+    z-index:-1;
+    filter:blur(8px);
+  }
+
+  .header{text-align:center;margin-bottom:12px;position:relative;z-index:1}
+  .avatar{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    margin:0 auto 12px;
+    overflow:hidden;
+    border:3px solid rgba(255,42,74,0.15);
+    display:inline-block;
+    position:relative;
+    background:linear-gradient(135deg, rgba(255,42,74,0.05), rgba(122,42,255,0.05));
+    box-shadow:0 0 30px rgba(255,42,74,0.05);
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  h1{
+    margin:6px 0 4px;
+    font-size:22px;
+    letter-spacing:1px;
+    font-weight:900;
+    background:linear-gradient(135deg, #ff2a4a, #7a2aff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  p.bio{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+    font-weight:300;
+    letter-spacing:0.3px;
+  }
+
+  .socials{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    margin:14px 0;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:1;
+  }
+  .socials a{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.02);
+    color:inherit;
+    text-decoration:none;
+    font-weight:600;
+    font-size:13px;
+    border:1px solid rgba(255,255,255,0.03);
+    transition:0.3s;
+  }
+  .socials a:hover{
+    background:rgba(255,42,74,0.06);
+    border-color:rgba(255,42,74,0.15);
+    box-shadow:0 0 20px rgba(255,42,74,0.04);
+  }
+  .socials a svg{
+    width:18px;
+    height:18px;
+    fill:currentColor;
+    flex-shrink:0;
+  }
+
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:10px;
+    position:relative;
+    z-index:1;
+  }
+  .link-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.01);
+    border:1px solid rgba(255,255,255,0.03);
+    text-decoration:none;
+    color:inherit;
+    font-weight:600;
+    transition:0.3s;
+  }
+  .link-btn:hover{
+    background:rgba(255,42,74,0.04);
+    border-color:rgba(255,42,74,0.12);
+    transform:translateX(4px);
+    box-shadow:0 0 30px rgba(255,42,74,0.02);
+  }
+  .link-btn .icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    flex:0 0 44px;
+    background:linear-gradient(135deg, rgba(255,42,74,0.04), rgba(122,42,255,0.04));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,42,74,0.04);
+  }
+  .link-btn .icon svg{
+    width:22px;
+    height:22px;
+    fill:var(--accent);
+    flex-shrink:0;
+  }
+  .link-title{font-size:15px;font-weight:700}
+  .link-sub{font-size:12px;color:var(--muted);margin-top:4px;font-weight:300}
+
+  .badge-saluran{
+    display:inline-block;
+    font-size:10px;
+    background:rgba(255,42,74,0.08);
+    color:var(--accent);
+    padding:2px 10px;
+    border-radius:20px;
+    border:1px solid rgba(255,42,74,0.06);
+    margin-left:8px;
+    font-weight:700;
+    letter-spacing:0.5px;
+  }
+
+  .payment-section{
+    margin-top:14px;
+    padding:14px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.01);
+    border:1px solid rgba(255,255,255,0.03);
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .payment-section .title{
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:10px;
+    color:var(--muted);
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .payment-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:14px;
+    border-radius:12px;
+    background:linear-gradient(135deg, rgba(255,42,74,0.04), rgba(122,42,255,0.04));
+    border:1px solid rgba(255,42,74,0.06);
+    text-decoration:none;
+    color:inherit;
+    font-weight:700;
+    font-size:15px;
+    transition:0.3s;
+    width:100%;
+  }
+  .payment-btn:hover{
+    background:linear-gradient(135deg, rgba(255,42,74,0.08), rgba(122,42,255,0.08));
+    border-color:rgba(255,42,74,0.15);
+    box-shadow:0 0 40px rgba(255,42,74,0.03);
+  }
+  .payment-btn .pay-icon{font-size:24px}
+
+  .footer{
+    margin-top:14px;
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    opacity:0.4;
+    position:relative;
+    z-index:1;
+    letter-spacing:0.5px;
+  }
+  .glow-line{
+    width:60px;
+    height:2px;
+    margin:10px auto 0;
+    background:linear-gradient(90deg, transparent, rgba(255,42,74,0.2), transparent);
+    border-radius:4px;
+  }
+
+  @media (max-width:420px){
+    .avatar{width:96px;height:96px}
+    .card{padding:20px 16px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header class="header">
+        <div class="avatar">
+          <img src="https://u.pone.rs/tdesdewa.jpg" alt="avatar" />
+        </div>
+        <h1>𝖛𝖎𝖑𝖑𝖆𝖎𝖓 𝖎𝖟𝖆𝖐𝖎</h1>
+        <p class="bio">Tidak mencari sorotan, tidak mengejar tepuk tangan. Biarkan hasil yang berbicara. 
+      <div>   Diam adalah cara ⚔︎ ︎aksi adalah bukti ☠︎</p>
+      </header>
+
+      <!-- SOCIALS -->
+      <div class="socials" role="navigation" aria-label="social links">
+        <a href="https://wa.link/vd644s" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WA
+        </a>
+        <a href="https://t.me/Izaki86" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a href="https://tiktok.com/@villainizaki_" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.76-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          TikTok
+        </a>
+      </div>
+
+      <!-- LINKS UTAMA -->
+      <div class="links" aria-label="main links">
+
+        <!-- SALURAN 1: VILLAIN IZAKI -->
+        <a class="link-btn" href="https://whatsapp.com/channel/0029VbBcpKWAYlURlfmLa62R" target="_blank">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <div class="link-title">SALURAN  VILLAIN IZAKI <span class="badge-saluran">RESMI</span></div>
+            <div class="link-sub">Update & pengumuman resmi</div>
+          </div>
+        </a>
+
+        <!-- SALURAN 2: VILLAIN TEAM -->
+        <a class="link-btn" href="https://whatsapp.com/channel/0029VbBuiGU9xVJeqWVyib3O" target="_blank">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <div class="link-title">SALURAN VILLAIN TEAM <span class="badge-saluran">AKSI TEAM</span></div>
+            <div class="link-sub">Info team & kolaborasi</div>
+          </div>
+        </a>
+
+        <!-- GRUP MAIN BOT WA -->
+        <a class="link-btn" href="https://chat.whatsapp.com/CHeX7kDEGRe0zXCJ0KDXDZ?s=cl&p=a&ilr=0&amv=1" target="_blank">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+          </div>
+          <div>
+            <div class="link-title">GRUP BOT WA VILLAIN TEAM <span class="badge-saluran">BOT</span></div>
+            <div class="link-sub">Diskusi & main bot bareng</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- PAYMENT -->
+      <div class="payment-section">
+        <div class="title">💳 ALL PAYMENT </div>
+        <a class="payment-btn" href="https://payment-villain-izaki.netlify.app/" target="_blank">
+          <span class="pay-icon">💵</span>
+          <span>Klik untuk Bayar</span>
+          <span style="margin-left:auto;color:var(--accent);font-size:13px">→</span>
+        </a>
+      </div>
+
+      <div class="glow-line"></div>
+
+      <div class="footer">
+        <div style="margin-top:12px">Villain Team Created by <strong style="color:var(--muted)">©𝖛𝖎𝖑𝖑𝖆𝖎𝖓 𝖎𝖟𝖆𝖐𝖎</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const AUDIO_URL = 'https://u.pone.rs/egsfpqji.ogg';
+      let audio = null;
+      let playAttempts = 0;
+      const maxAttempts = 20;
+
+      function forcePlay(){
+        if(!audio){
+          audio = new Audio(AUDIO_URL);
+          audio.loop = true;
+          audio.volume = 0.3;
+        }
+        
+        audio.play().then(() => {
+          console.log('Sound autoplay berhasil!');
+        }).catch((e) => {
+          console.log('Autoplay gagal, coba lagi...', e);
+          playAttempts++;
+          if(playAttempts < maxAttempts){
+            setTimeout(forcePlay, 300);
+          }
+        });
+      }
+
+      window.addEventListener('load', function(){
+        setTimeout(forcePlay, 200);
+      });
+
+      if(document.readyState === 'complete'){
+        setTimeout(forcePlay, 100);
+      }
+
+      document.addEventListener('click', function firstClick(){
+        if(audio && audio.paused){
+          audio.play().catch(()=>{});
+        }
+        document.removeEventListener('click', firstClick);
+      }, { once: true });
+
+      document.addEventListener('touchstart', function firstTouch(){
+        if(audio && audio.paused){
+          audio.play().catch(()=>{});
+        }
+        document.removeEventListener('touchstart', firstTouch);
+      }, { once: true });
+
+    })();
+  </script>
+</body>
+</html>
